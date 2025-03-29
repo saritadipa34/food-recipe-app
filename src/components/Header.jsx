@@ -6,15 +6,14 @@ import { CardContext } from "../context/CardContext";
 
 const Header=()=>{
 const [inputValue,setInputValue]=useState("");
-    const{fetchData,setFilteredData}=useContext(CardContext);
+const {fetchData,setFilteredData,filteredData,setNotFound} = useContext(CardContext);
 
 const handleSearch=()=>{
-const filtered= fetchData.filter((item)=>{
-// return inputValue.trim().toLowerCase() === item.strMeal.toLowerCase()
-return item.strMeal.toLowerCase().includes(inputValue.trim().toLowerCase())
+const filtered = fetchData.filter((item)=>{
+return inputValue.trim().toLowerCase() === item.strMeal.toLowerCase();
 })
-console.log(filtered); 
 setFilteredData(filtered);
+setInputValue("");
 }
 
 const handleInput=(e)=>{
@@ -22,6 +21,7 @@ const handleInput=(e)=>{
     setInputValue(value)
     console.log(e.target.value,"input",inputValue)
 }
+
 
     return(
         <div className="w-full text-right bg-yellow-200 pr-2 h-[50px] py-2 flex justify-between">

@@ -8,6 +8,7 @@ const [searchValue,setSearchValue]=useState("");
 const[isError,setIsError]=useState(false);
 const [isLoading,setIsLoading]=useState(false);
 const [filteredData,setFilteredData]=useState("");
+const [notFound,setNotFound]=useState(false);
 
 
     useEffect(()=>{
@@ -31,8 +32,10 @@ const [filteredData,setFilteredData]=useState("");
         getData();
     },[searchValue])
 
+
+    
     return(
-<CardContext.Provider value={{fetchData,setFetchData,isLoading,isError,filteredData,setFilteredData}}>
+<CardContext.Provider value={{fetchData,setFetchData,isLoading,isError,filteredData,setFilteredData,setNotFound,notFound}}>
     {children}
 </CardContext.Provider>
     )
