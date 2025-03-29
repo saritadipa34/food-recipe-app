@@ -1,26 +1,35 @@
 import { FaShoppingCart } from "react-icons/fa";
 import Button from "./Button";
 import InputBox from "./InputBox";
-import { useState } from "react";
+import { useContext, useState } from "react";
+import { CardContext } from "../context/CardContext";
 
 const Header=()=>{
-    const [inputValue,setInputValue]=useState("");
+const [inputValue,setInputValue]=useState("");
+    const{fetchData,setFilteredData}=useContext(CardContext);
 
-
-const handleInput=(e)=>{
-    setInputValue(e.target.value)
-    console.log(e.target.value,"input",inputValue)
+const handleSearch=()=>{
+const filtered= fetchData.filter((item)=>{
+// return inputValue.trim().toLowerCase() === item.strMeal.toLowerCase()
+return item.strMeal.toLowerCase().includes(inputValue.trim().toLowerCase())
+})
+console.log(filtered); 
+setFilteredData(filtered);
 }
 
-
+const handleInput=(e)=>{
+    const value=e.target.value;
+    setInputValue(value)
+    console.log(e.target.value,"input",inputValue)
+}
 
     return(
         <div className="w-full text-right bg-yellow-200 pr-2 h-[50px] py-2 flex justify-between">
 <img className="h-10 w-20" src="/logo.png" alt="logo" />
             
 <div className="flex w-1/2 justify-between text-center">
-    <InputBox onChange={handleInput}/>
-    <Button text="Search" />
+    <InputBox onChange={handleInput} value={inputValue}/>
+    <Button text="Search" onClick={handleSearch} />
 </div>
     <div className="w-[100px] flex justify-between px-2">
     <FaShoppingCart fontSize={30} />

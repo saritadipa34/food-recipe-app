@@ -7,6 +7,9 @@ export const CardContextProvider=({children})=>{
 const [searchValue,setSearchValue]=useState("");
 const[isError,setIsError]=useState(false);
 const [isLoading,setIsLoading]=useState(false);
+const [filteredData,setFilteredData]=useState("");
+
+
     useEffect(()=>{
         const getData=async()=>{
             setIsLoading(true);
@@ -29,7 +32,7 @@ const [isLoading,setIsLoading]=useState(false);
     },[searchValue])
 
     return(
-<CardContext.Provider value={{fetchData,setFetchData,isLoading,isError}}>
+<CardContext.Provider value={{fetchData,setFetchData,isLoading,isError,filteredData,setFilteredData}}>
     {children}
 </CardContext.Provider>
     )
