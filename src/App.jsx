@@ -1,10 +1,13 @@
 import Header from "./components/Header";
+import Body from "./components/Body";
+const App=({fetchData})=>{
 
-const App=()=>{
+  
   return(
     <div className="min-h-screen px-[100px] py-[50px] w-screen bg-blue-200">
       <h1 className="text-center font-bold text-4xl mb-2">FOOD RECIPE APP</h1>
-      <Header />
+      <Header fetchData={fetchData} />
+      <Body />
     </div>
   )
 }
