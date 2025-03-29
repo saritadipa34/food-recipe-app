@@ -11,6 +11,10 @@ console.log(fetchData);
 if(isLoading) return <div className="text-center font-bold text-4xl">Loading........</div>;
 if(isError) return <div className="text-center font-bold text-4xl text-red-600"> Error in Fetching Data</div>
 
+const handleRecipe=()=>{
+    console.log("recipe")
+}
+
 useEffect(()=>{
     if(filteredData.length === 0 && filteredData){
 setNotFound(true)
@@ -35,7 +39,8 @@ setNotFound(true)
 })
   ) :(
       fetchData.map((item) => (
-        <Card
+        <Card 
+        onClick={handleRecipe}
           itemName={item.strMeal}
           itemImage={item.strMealThumb}
           key={item.idMeal}
