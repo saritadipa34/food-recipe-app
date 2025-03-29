@@ -4,14 +4,16 @@ import Card from "./Card";
 import { CardContext } from "../context/CardContext";
 
 const Body=()=>{
-    const {fetchData}=useContext(CardContext);
-console.log(fetchData) 
-    const displayItems=fetchData.slice(0,24);
+    const {fetchData,isLoading,isError}=useContext(CardContext);
+console.log(fetchData);
+
+if(isLoading) return <div className="text-center font-bold text-4xl">Loading........</div>;
+if(isError) return <div className="text-center font-bold text-4xl text-red-600"> Error in Fetching Data</div>
 
     return(
         <div className="flex gap-6 flex-wrap mt-10">
-{
-    displayItems.map((item,i)=>{
+
+{ fetchData.map((item,i)=>{
         return <Card 
         itemName={item.strMeal}
         itemImage={item.strMealThumb}
