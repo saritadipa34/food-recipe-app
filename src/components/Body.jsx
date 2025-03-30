@@ -6,30 +6,27 @@ import { CardContext } from "../context/CardContext";
 
 const Body=()=>{
     const {fetchData,isLoading,isError,filteredData,notFound,setNotFound}=useContext(CardContext);
-console.log(fetchData);
+   console.log(fetchData);
+
+
+useEffect(()=>{
+    if(filteredData && filteredData.length === 0){
+setNotFound(true)
+    } else {
+        setNotFound(false)
+        }},[filteredData,setNotFound])
 
 if(isLoading) return <div className="text-center font-bold text-4xl">Loading........</div>;
 if(isError) return <div className="text-center font-bold text-4xl text-red-600"> Error in Fetching Data</div>
 
-const handleRecipe=()=>{
-    console.log("recipe")
-}
-
-useEffect(()=>{
-    if(filteredData.length === 0 && filteredData){
-setNotFound(true)
-    } else{
-        setNotFound(false)
-    }
-},[filteredData,setNotFound])
-
     return(
 <>
-       {notFound && <p className="text-center text-sm mt-4">Not Found</p>}    
 
-        <div className="flex gap-6 flex-wrap mt-5">
+{notFound && <div className="text-center  text-l ">No Data Found</div>}
+
+        <div className="flex gap-6 flex-wrap mt-2">
 {
-  filteredData && filteredData.length > 0 ? (
+   filteredData.length > 0 ? (
     filteredData.map((item) => {
       return  <Card
         itemName={item.strMeal}
@@ -40,10 +37,11 @@ setNotFound(true)
   ) :(
       fetchData.map((item) => (
         <Card 
-        onClick={handleRecipe}
+      
           itemName={item.strMeal}
           itemImage={item.strMealThumb}
           key={item.idMeal}
+          item={item}
         />
       ))
   )

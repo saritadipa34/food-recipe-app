@@ -3,7 +3,7 @@ import { createContext, useState,useEffect } from "react";
 export const CardContext=createContext();
 
 export const CardContextProvider=({children})=>{
-  const [fetchData,setFetchData]=useState([]);
+const [fetchData,setFetchData]=useState([]);
 const [searchValue,setSearchValue]=useState("");
 const[isError,setIsError]=useState(false);
 const [isLoading,setIsLoading]=useState(false);
@@ -32,10 +32,9 @@ const [notFound,setNotFound]=useState(false);
         getData();
     },[searchValue])
 
-
     
     return(
-<CardContext.Provider value={{fetchData,setFetchData,isLoading,isError,filteredData,setFilteredData,setNotFound,notFound}}>
+<CardContext.Provider value={{fetchData,isLoading,isError,filteredData,setFilteredData,setNotFound,notFound}}>
     {children}
 </CardContext.Provider>
     )

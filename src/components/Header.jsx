@@ -24,9 +24,9 @@ const handleInput=(e)=>{
 
 
     return(
+<>      <h1 className="text-center font-bold text-4xl mb-2">FOOD RECIPE APP</h1>
         <div className="w-full text-right bg-orange-400 pr-2 h-[50px] py-2 flex justify-between">
-<img className="h-10 w-20" src="/logo.png" alt="logo" />
-            
+<img className="h-10 w-20" src="/logo.png" alt="logo" />          
 <div className="flex w-1/2 justify-between text-center">
     <InputBox onChange={handleInput} value={inputValue}/>
     <Button text="Search" onClick={handleSearch} />
@@ -36,6 +36,7 @@ const handleInput=(e)=>{
     <h1 className="text-xl">0</h1>
     </div>
 </div>
+</>
     )
 }
 export default Header;
