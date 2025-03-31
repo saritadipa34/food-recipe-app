@@ -1,4 +1,4 @@
-import { FaShoppingCart } from "react-icons/fa";
+import { IoRadioButtonOn } from "react-icons/io5";
 import Button from "./Button";
 import InputBox from "./InputBox";
 import { useContext, useState } from "react";
@@ -6,11 +6,11 @@ import { CardContext } from "../context/CardContext";
 
 const Header=()=>{
 const [inputValue,setInputValue]=useState("");
-const {fetchData,setFilteredData,filteredData,setNotFound} = useContext(CardContext);
+const {fetchData,setFilteredData} = useContext(CardContext);
 
 const handleSearch=()=>{
 const filtered = fetchData.filter((item)=>{
-return inputValue.trim().toLowerCase() === item.strMeal.toLowerCase();
+return item.strMeal.toLowerCase().replace(/\s+/g,'').includes(inputValue.toLowerCase().replace(/\s+/g,''));
 })
 setFilteredData(filtered);
 setInputValue("");
@@ -32,8 +32,8 @@ const handleInput=(e)=>{
     <Button text="Search" onClick={handleSearch} />
 </div>
     <div className="w-[100px] flex justify-between px-2">
-    <FaShoppingCart fontSize={30} />
-    <h1 className="text-xl">0</h1>
+ 
+    <IoRadioButtonOn className="cursor-pointer text-4xl text-amber-800" />
     </div>
 </div>
 </>

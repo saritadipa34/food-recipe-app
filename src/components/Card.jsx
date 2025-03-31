@@ -9,7 +9,7 @@ const Card=({itemName,itemImage,item})=>{
 <img className="h-[170px] w-full" src={itemImage} alt="image"/>
 </div>
 <p className="text-center my-4 font-bold">{itemName}</p>
-<Link to="/recipe" state={item} >  <Button  className={"rounded-lg"} text={"Recipe"} /> </Link>
+<Link to="/recipe" state={item} > <Button  className={"rounded-lg"} text={"Recipe"} /> </Link>
         </div>
     )
 }

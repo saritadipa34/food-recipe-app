@@ -7,6 +7,8 @@ import { CardContext } from "../context/CardContext";
 const Body=()=>{
     const {fetchData,isLoading,isError,filteredData,notFound,setNotFound}=useContext(CardContext);
    console.log(fetchData);
+   const displayData =fetchData.slice(0,24);
+   console.log(displayData);
 
 
 useEffect(()=>{
@@ -35,9 +37,8 @@ if(isError) return <div className="text-center font-bold text-4xl text-red-600">
       />
 })
   ) :(
-      fetchData.map((item) => (
+      displayData.map((item) => (
         <Card 
-         
           itemName={item.strMeal}
           itemImage={item.strMealThumb}
           key={item.idMeal}

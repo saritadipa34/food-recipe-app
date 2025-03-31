@@ -10,7 +10,7 @@ console.log(recipe);
         <div className=" bg-orange-300 h-screen pt-[30px] pb-0">
             <div>
         <h1 className="text-center text-2xl font-bold mb-2">Recipe Detail's</h1>
-    <Link to="/"> <Button className="text-2xl" text={"⬅️"} /></Link>
+    <Link to="/" > <Button className="text-2xl" text={"⬅️"} /></Link>
         </div>
         <div className=" py-[10px] border px-[20px] flex justify-between gap-5 w-full">
             
